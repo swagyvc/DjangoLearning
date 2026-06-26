@@ -17,12 +17,12 @@ AI tools were used only for research purposes, such as understanding concepts an
 **YouTube**
 https://www.youtube.com/
 
-![alt text](<youtubeclone/images/Screenshot 2026-06-25 at 10.35.05 PM.png>)
+![alt text](<images/Screenshot 2026-06-25 at 10.35.05 PM.png>)
 ### My Version
 
 **YouTube Frontend Clone**
 
-![alt text](<Screenshot 2026-06-25 at 10.38.16 PM.png>) 
+![alt text](<images/Screenshot 2026-06-25 at 10.38.16 PM.png>)
 
 
 ## What I Learned
