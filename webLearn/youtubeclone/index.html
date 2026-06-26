@@ -2,25 +2,48 @@
 <html>
     <head>
         <title>YouTube Clone</title>
+        
         <link rel = "stylesheet" href = "style.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </head>
+    
     <body>
         <input class = "search-bar" type = "type" placeholder = "Search">
 
         <div class = "video-preview">
-            <img class = "thumbnail" src = images/mark.avif>
-
-            <p class = "video-title">Testing What Happens If You Jump On A Moving Train</p>
-            <p class = "video-author">Mark Rober</p>
-            <p class = "video-stats">26M views &#183; 1 year ago </p>
+            <div class = "thumbnail-row">
+                <img class = "thumbnail" src = images/mark.avif>
+            </div>
+            <div>
+                <div class = "channel-picture">
+                    <img class = "profile-picture" src = images/marklogo.jpg>
+                </div>
+                <div class = "video-info">
+                    <p class = "video-title">Testing What Happens If You Jump On A Moving Train</p>
+                    <p class = "video-author">Mark Rober</p>
+                    <p class = "video-stats">26M views &#183; 1 year ago</p>
+                </div>
+            </div>
         </div>
-
-            <div class = "video-preview">
-            <img class = "thumbnail" src = images/steve.avif>
-
-            <p class = "video-title">How Good Was Steve Kerr Actually?</p>
-            <p class = "video-author">Nonstop</p>
-            <p class = "video-stats">1.8M views &#183; 2 years ago </p>
+            
+        <div class = "video-preview">
+            <div class = "thumbnail-row">
+                <img class = "thumbnail" src = images/steve.avif>
+            </div>
+            <div>
+                <div class = "channel-picture">
+                    <img class = "profile-picture" src = images/nonstoplogo.jpg>
+                </div>
+                <div class = "video-info">
+                    <p class = "video-title">How Good Was Steve Kerr Actually?</p>
+                    <p class = "video-author">Nonstop</p>
+                    <p class = "video-stats">1.8M views &#183; 2 years ago</p>
+                </div>
+            </div>
+        </div>
         </div>
     </body>
 </html>
