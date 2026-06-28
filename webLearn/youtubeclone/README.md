@@ -22,9 +22,11 @@ https://www.youtube.com/
 
 **YouTube Frontend Clone**
 
+**PHASE 1**
 ![alt text](<images/Screenshot 2026-06-25 at 10.38.16 PM.png>)
 
-
+**PHASE 2**
+![alt text](<images/Screenshot 2026-06-28 at 2.09.07 AM.png>)
 ## What I Learned
 
 * HTML page structure and semantic elements
