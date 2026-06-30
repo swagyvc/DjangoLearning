@@ -27,6 +27,10 @@ https://www.youtube.com/
 
 **PHASE 2**
 ![alt text](<images/Screenshot 2026-06-28 at 2.09.07 AM.png>)
+
+**PHASE 3**
+![alt text](<images/Screenshot 2026-06-29 at 9.32.44 PM.png>)
+
 ## What I Learned
 
 * HTML page structure and semantic elements
