@@ -62,10 +62,12 @@
     height: 25px;
     margin-left: 20px;
     margin-right: 1px;
+    cursor: pointer;
 }
 
 .youtube-logo {
     height: 90px;
+    cursor: pointer;
 }
 
 .search-button {
@@ -78,7 +80,7 @@
     border-radius: 2px;
     margin-left: -1px;
     box-shadow: inset 0px 2px 2.5px rgba(56, 55, 55, 0.1);
-
+    cursor: pointer;
     margin-right: 20px;
 }
 
@@ -93,6 +95,7 @@
     width: 38px;
     border-radius: 20px;
     border: none;
+    cursor: pointer;
 }
 
 .voice-icon {
@@ -116,6 +119,7 @@
     width: 95px;
     border: none;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .create-icon {
@@ -127,11 +131,33 @@
 
 .bell-icon {
     height: 24px;
-    margin-right: 10px;
+    margin-right: 9px;
+    margin-top: 6px;
+    cursor: pointer;
 }
 
 .profile-icon {
     height: 28.5px;
     border-radius: 20px;
     margin-right: 15px;
+}
+
+.bell-icon-containner {
+    position: relative;
+}
+
+.notifications-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(230, 36, 36);
+    color: white;
+    font-family: Roboto, Arial;
+    font-size: 11.5px;
+    font-weight: 500;
+    border-radius: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }

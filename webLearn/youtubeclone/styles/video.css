@@ -1,5 +1,7 @@
 .thumbnail {
     width: 100%;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 .video-title {
@@ -8,6 +10,7 @@
     font-weight: 500;
     line-height: 20px;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .video-info-grid {
@@ -19,6 +22,7 @@
 .profile-picture {
     width:35px;
     border-radius: 50px;
+    cursor: pointer;
 }
 
 .thumbnail-row {
