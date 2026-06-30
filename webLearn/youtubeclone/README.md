@@ -46,3 +46,14 @@ https://www.youtube.com/
 - Final UI refinements and pixel-perfect adjustments
 
 ![alt text](<images/Screenshot 2026-06-29 at 11.55.17 PM.png>)
+
+## Acknowledgements
+
+A special thanks to **SuperSimpleDev** for creating high-quality front-end tutorials that helped guide my learning journey.
+
+This project was built as a personal practice project by following the HTML & CSS course while implementing the concepts independently to recreate the YouTube interface.
+
+* **YouTube Channel:** https://www.youtube.com/@SuperSimpleDev
+* **Course:** https://www.youtube.com/watch?v=G3e-cpL7ofc
+
+The purpose of this project is to strengthen my understanding of HTML, CSS, responsive layouts, Flexbox, Grid, and modern front-end development practices. The implementation was completed as a learning exercise and is intended for educational purposes only.
