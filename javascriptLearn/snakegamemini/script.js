@@ -1,23 +1,26 @@
-// Get canvas and context
+// Canvas
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
-// Score display
+// Score
 const scoreText = document.getElementById("score");
 
-// Game settings
+// Settings
 const gridSize = 20;
 const tileCount = canvas.width / gridSize;
 
-// Snake starts with one segment
+// Snake
 let snake = [
     { x: 10, y: 10 }
 ];
 
-// Initial movement (moving right)
-let direction = { x: 1, y: 0 };
+// Initial direction
+let direction = {
+    x: 1,
+    y: 0
+};
 
-// Food position
+// Food
 let food = {
     x: 15,
     y: 15
@@ -26,42 +29,54 @@ let food = {
 // Score
 let score = 0;
 
-// ======================
-// Main Game Loop
-// ======================
+// Create first food
+createFood();
+
+// Main game loop
+setInterval(gameLoop, 100);
+
 function gameLoop() {
     update();
     draw();
 }
 
-// Run game every 100 milliseconds
-setInterval(gameLoop, 100);
-
-// ======================
-// Update Game
-// ======================
+// =====================
+// Update
+// =====================
 function update() {
 
-    // Create new head
+    // New head
     const head = {
         x: snake[0].x + direction.x,
         y: snake[0].y + direction.y
     };
 
-    // Add new head
+    // Wrap horizontally
+    if (head.x < 0) {
+        head.x = tileCount - 1;
+    } else if (head.x >= tileCount) {
+        head.x = 0;
+    }
+
+    // Wrap vertically
+    if (head.y < 0) {
+        head.y = tileCount - 1;
+    } else if (head.y >= tileCount) {
+        head.y = 0;
+    }
+
+    // Add head
     snake.unshift(head);
 
-    // Check if food eaten
+    // Eat food
     if (head.x === food.x && head.y === food.y) {
 
         score++;
         scoreText.textContent = score;
-
         createFood();
 
     } else {
 
-        // Remove tail
         snake.pop();
 
     }
@@ -70,12 +85,11 @@ function update() {
 
 }
 
-// ======================
-// Draw Everything
-// ======================
+// =====================
+// Draw
+// =====================
 function draw() {
 
-    // Clear screen
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -84,9 +98,9 @@ function draw() {
 
 }
 
-// ======================
+// =====================
 // Draw Snake
-// ======================
+// =====================
 function drawSnake() {
 
     ctx.fillStyle = "lime";
@@ -104,9 +118,9 @@ function drawSnake() {
 
 }
 
-// ======================
+// =====================
 // Draw Food
-// ======================
+// =====================
 function drawFood() {
 
     ctx.fillStyle = "red";
@@ -120,35 +134,37 @@ function drawFood() {
 
 }
 
-// ======================
-// Create Random Food
-// ======================
+// =====================
+// Create Food
+// =====================
 function createFood() {
 
-    let validPosition = false;
+    let valid = false;
 
-    while (!validPosition) {
+    while (!valid) {
 
         food.x = Math.floor(Math.random() * tileCount);
         food.y = Math.floor(Math.random() * tileCount);
 
-        validPosition = true;
+        valid = true;
 
-        // Make sure food doesn't appear on snake
         for (let part of snake) {
+
             if (part.x === food.x && part.y === food.y) {
-                validPosition = false;
+                valid = false;
                 break;
             }
+
         }
+
     }
 
 }
 
-// ======================
-// Keyboard Controls
-// ======================
-document.addEventListener("keydown", (event) => {
+// =====================
+// Controls
+// =====================
+document.addEventListener("keydown", function(event) {
 
     switch (event.key) {
 
@@ -180,62 +196,48 @@ document.addEventListener("keydown", (event) => {
 
 });
 
-// ======================
-// Collision Detection
-// ======================
+// =====================
+// Self Collision
+// =====================
 function checkCollision() {
 
     const head = snake[0];
 
-    // Wall collision
-    if (
-        head.x < 0 ||
-        head.x >= tileCount ||
-        head.y < 0 ||
-        head.y >= tileCount
-    ) {
-        gameOver();
-        return;
-    }
-
-    // Snake collision
     for (let i = 1; i < snake.length; i++) {
 
         if (
             head.x === snake[i].x &&
             head.y === snake[i].y
         ) {
+
             gameOver();
             return;
+
         }
 
     }
 
 }
 
-// ======================
+// =====================
 // Game Over
-// ======================
+// =====================
 function gameOver() {
 
-    alert("Game Over!\n\nScore: " + score);
+    alert("Game Over!\nScore: " + score);
 
-    // Reset snake
     snake = [
         { x: 10, y: 10 }
     ];
 
-    // Reset direction
     direction = {
         x: 1,
         y: 0
     };
 
-    // Reset score
     score = 0;
     scoreText.textContent = score;
 
-    // New food
     createFood();
 
 }
