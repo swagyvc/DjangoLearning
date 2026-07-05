@@ -1,5 +1,5 @@
 /* =========================
-   Google Font & Reset
+   Global Reset
 ========================= */
 
 * {
@@ -16,39 +16,44 @@ body {
     justify-content: center;
     align-items: center;
 
-    background: linear-gradient(135deg, #4f46e5, #7c3aed, #0ea5e9);
+    background: linear-gradient(135deg, #4f46e5, #7c3aed, #06b6d4);
     padding: 20px;
+    color: white;
 }
 
 /* =========================
-   Container
+   Main Container
 ========================= */
 
 .container {
     width: 100%;
-    max-width: 500px;
+    max-width: 520px;
 
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
 
-    border-radius: 20px;
+    border-radius: 22px;
+    padding: 25px;
 
-    padding: 30px;
-
-    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
 
     text-align: center;
 }
 
 /* =========================
-   Title
+   Header
 ========================= */
 
 h1 {
-    color: white;
-    font-size: 42px;
-    margin-bottom: 25px;
-    letter-spacing: 1px;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 20px;
 }
 
 /* =========================
@@ -56,67 +61,50 @@ h1 {
 ========================= */
 
 .scoreboard {
-
     display: flex;
     justify-content: space-between;
-
-    gap: 15px;
-
-    margin-bottom: 30px;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .score-card {
-
     flex: 1;
+    padding: 14px;
 
-    background: rgba(255,255,255,.18);
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
 
-    border-radius: 15px;
-
-    padding: 15px;
-
-    transition: .3s;
+    transition: 0.25s ease;
 }
 
 .score-card:hover {
-
     transform: translateY(-4px);
-
-    background: rgba(255,255,255,.25);
+    background: rgba(255, 255, 255, 0.22);
 }
 
-.score-card h3 {
-
-    color: white;
-
-    font-size: 15px;
-
-    margin-bottom: 8px;
+.label {
+    font-size: 13px;
+    opacity: 0.85;
+    display: block;
 }
 
-.score-card p {
-
-    color: white;
-
-    font-size: 30px;
-
+.score {
+    font-size: 28px;
     font-weight: bold;
+    margin-top: 6px;
 }
 
-/* Colored borders */
+/* Colored accents */
 
-.x-score {
-
+.player-x {
     border-bottom: 4px solid #22c55e;
 }
 
-.draw-score {
-
+.draws {
     border-bottom: 4px solid #facc15;
 }
 
-.o-score {
-
+.player-o {
     border-bottom: 4px solid #ef4444;
 }
 
@@ -124,36 +112,29 @@ h1 {
    Status
 ========================= */
 
+.status-container {
+    margin: 15px 0 20px;
+}
+
 #status {
-
-    color: white;
-
-    margin-bottom: 25px;
-
-    font-size: 24px;
-
+    font-size: 20px;
     font-weight: 600;
-
-    min-height: 35px;
+    min-height: 28px;
 }
 
 /* =========================
-   Board
+   Game Board
 ========================= */
 
 .board {
-
     display: grid;
-
     grid-template-columns: repeat(3, 110px);
-
     grid-template-rows: repeat(3, 110px);
+    gap: 10px;
 
     justify-content: center;
 
-    gap: 12px;
-
-    margin-bottom: 30px;
+    margin-bottom: 22px;
 }
 
 /* =========================
@@ -161,163 +142,126 @@ h1 {
 ========================= */
 
 .cell {
-
-    background: rgba(255,255,255,.20);
-
-    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
+
+    font-size: 54px;
+    font-weight: bold;
 
     cursor: pointer;
 
-    color: white;
-
-    font-size: 56px;
-
-    font-weight: bold;
-
-    transition: .25s;
+    transition: 0.2s ease;
 }
 
 .cell:hover {
-
-    transform: scale(1.05);
-
-    background: rgba(255,255,255,.35);
+    transform: scale(1.06);
+    background: rgba(255, 255, 255, 0.28);
 }
 
 .cell:active {
-
-    transform: scale(.95);
+    transform: scale(0.95);
 }
 
-/* Filled cells */
-
+/* Disabled cell */
 .cell.disabled {
-
     cursor: not-allowed;
 }
 
-/* Winner */
-
+/* Winning cells */
 .cell.winner {
-
     background: #22c55e;
-
-    animation: winnerAnimation .7s infinite alternate;
+    animation: pulse 0.6s infinite alternate;
 }
 
-@keyframes winnerAnimation {
-
-    from {
-
-        transform: scale(1);
-    }
-
-    to {
-
-        transform: scale(1.08);
-    }
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
 }
 
 /* =========================
    Buttons
 ========================= */
 
-.buttons {
-
+.controls {
     display: flex;
-
+    gap: 12px;
     justify-content: center;
-
-    gap: 15px;
-
     flex-wrap: wrap;
 }
 
 button {
-
     border: none;
-
-    padding: 14px 28px;
-
+    padding: 12px 18px;
     border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 600;
 
     cursor: pointer;
 
-    font-size: 16px;
-
-    font-weight: 600;
-
-    transition: .25s;
+    transition: 0.25s ease;
 }
 
-/* Restart */
-
+/* Restart button */
 #restartBtn {
-
     background: white;
-
     color: #4f46e5;
 }
 
 #restartBtn:hover {
-
     transform: translateY(-3px);
-
-    background: #f5f5f5;
+    background: #f3f4f6;
 }
 
-/* Reset Score */
-
+/* Reset score button */
 #resetScoreBtn {
-
     background: #ef4444;
-
     color: white;
 }
 
 #resetScoreBtn:hover {
-
     background: #dc2626;
-
     transform: translateY(-3px);
 }
 
 /* =========================
-   Responsive
+   Footer
+========================= */
+
+footer {
+    margin-top: 18px;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+/* =========================
+   Responsive Design
 ========================= */
 
 @media (max-width: 600px) {
 
     h1 {
-
-        font-size: 34px;
+        font-size: 32px;
     }
 
     .board {
-
         grid-template-columns: repeat(3, 90px);
-
         grid-template-rows: repeat(3, 90px);
     }
 
     .cell {
-
-        font-size: 46px;
+        font-size: 42px;
     }
 
     .scoreboard {
-
         flex-direction: column;
     }
 
     button {
-
         width: 100%;
     }
 }
