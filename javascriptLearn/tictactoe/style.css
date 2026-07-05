@@ -1,52 +1,323 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* =========================
+   Google Font & Reset
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:Arial;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    background:#f2f2f2;
+body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #4f46e5, #7c3aed, #0ea5e9);
+    padding: 20px;
 }
 
-h1{
-    margin-bottom:20px;
+/* =========================
+   Container
+========================= */
+
+.container {
+    width: 100%;
+    max-width: 500px;
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+
+    text-align: center;
 }
 
-.board{
-    display:grid;
-    grid-template-columns:repeat(3,120px);
-    grid-template-rows:repeat(3,120px);
-    gap:5px;
+/* =========================
+   Title
+========================= */
+
+h1 {
+    color: white;
+    font-size: 42px;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
 }
 
-.cell{
-    background:white;
-    border:2px solid black;
+/* =========================
+   Scoreboard
+========================= */
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.scoreboard {
 
-    font-size:60px;
-    cursor:pointer;
+    display: flex;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
 }
 
-.cell:hover{
-    background:#ddd;
+.score-card {
+
+    flex: 1;
+
+    background: rgba(255,255,255,.18);
+
+    border-radius: 15px;
+
+    padding: 15px;
+
+    transition: .3s;
 }
 
-#status{
-    margin-top:20px;
+.score-card:hover {
+
+    transform: translateY(-4px);
+
+    background: rgba(255,255,255,.25);
 }
 
-button{
-    margin-top:20px;
-    padding:10px 25px;
-    cursor:pointer;
+.score-card h3 {
+
+    color: white;
+
+    font-size: 15px;
+
+    margin-bottom: 8px;
+}
+
+.score-card p {
+
+    color: white;
+
+    font-size: 30px;
+
+    font-weight: bold;
+}
+
+/* Colored borders */
+
+.x-score {
+
+    border-bottom: 4px solid #22c55e;
+}
+
+.draw-score {
+
+    border-bottom: 4px solid #facc15;
+}
+
+.o-score {
+
+    border-bottom: 4px solid #ef4444;
+}
+
+/* =========================
+   Status
+========================= */
+
+#status {
+
+    color: white;
+
+    margin-bottom: 25px;
+
+    font-size: 24px;
+
+    font-weight: 600;
+
+    min-height: 35px;
+}
+
+/* =========================
+   Board
+========================= */
+
+.board {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 110px);
+
+    grid-template-rows: repeat(3, 110px);
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 30px;
+}
+
+/* =========================
+   Cells
+========================= */
+
+.cell {
+
+    background: rgba(255,255,255,.20);
+
+    border-radius: 18px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-size: 56px;
+
+    font-weight: bold;
+
+    transition: .25s;
+}
+
+.cell:hover {
+
+    transform: scale(1.05);
+
+    background: rgba(255,255,255,.35);
+}
+
+.cell:active {
+
+    transform: scale(.95);
+}
+
+/* Filled cells */
+
+.cell.disabled {
+
+    cursor: not-allowed;
+}
+
+/* Winner */
+
+.cell.winner {
+
+    background: #22c55e;
+
+    animation: winnerAnimation .7s infinite alternate;
+}
+
+@keyframes winnerAnimation {
+
+    from {
+
+        transform: scale(1);
+    }
+
+    to {
+
+        transform: scale(1.08);
+    }
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+button {
+
+    border: none;
+
+    padding: 14px 28px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    transition: .25s;
+}
+
+/* Restart */
+
+#restartBtn {
+
+    background: white;
+
+    color: #4f46e5;
+}
+
+#restartBtn:hover {
+
+    transform: translateY(-3px);
+
+    background: #f5f5f5;
+}
+
+/* Reset Score */
+
+#resetScoreBtn {
+
+    background: #ef4444;
+
+    color: white;
+}
+
+#resetScoreBtn:hover {
+
+    background: #dc2626;
+
+    transform: translateY(-3px);
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 600px) {
+
+    h1 {
+
+        font-size: 34px;
+    }
+
+    .board {
+
+        grid-template-columns: repeat(3, 90px);
+
+        grid-template-rows: repeat(3, 90px);
+    }
+
+    .cell {
+
+        font-size: 46px;
+    }
+
+    .scoreboard {
+
+        flex-direction: column;
+    }
+
+    button {
+
+        width: 100%;
+    }
 }
