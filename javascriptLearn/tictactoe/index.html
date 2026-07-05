@@ -5,45 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
 
-        <h1>Tic Tac Toe</h1>
+        <!-- Title -->
+        <header>
+            <h1>Tic Tac Toe</h1>
+            <p class="subtitle">Play with your friend!</p>
+        </header>
 
         <!-- Scoreboard -->
-        <div class="scoreboard">
+        <section class="scoreboard">
 
-            <div class="score-card x-score">
-                <h3>Player X</h3>
-                <p id="xScore">0</p>
+            <div class="score-card player-x">
+                <span class="label">Player X</span>
+                <span id="xScore" class="score">0</span>
             </div>
 
-            <div class="score-card draw-score">
-                <h3>Draws</h3>
-                <p id="drawScore">0</p>
+            <div class="score-card draws">
+                <span class="label">Draws</span>
+                <span id="drawScore" class="score">0</span>
             </div>
 
-            <div class="score-card o-score">
-                <h3>Player O</h3>
-                <p id="oScore">0</p>
+            <div class="score-card player-o">
+                <span class="label">Player O</span>
+                <span id="oScore" class="score">0</span>
             </div>
 
-        </div>
+        </section>
 
         <!-- Game Status -->
-        <h2 id="status">Player X's Turn</h2>
+        <section class="status-container">
+            <h2 id="status">Player X's Turn</h2>
+        </section>
 
         <!-- Game Board -->
-        <div class="board">
+        <main class="board">
 
             <div class="cell" data-index="0"></div>
             <div class="cell" data-index="1"></div>
@@ -57,20 +63,25 @@
             <div class="cell" data-index="7"></div>
             <div class="cell" data-index="8"></div>
 
-        </div>
+        </main>
 
         <!-- Buttons -->
-        <div class="buttons">
+        <section class="controls">
 
-            <button id="restartBtn">
-                Restart Game
+            <button type="button" id="restartBtn">
+                🔄 Restart Round
             </button>
 
-            <button id="resetScoreBtn">
-                Reset Score
+            <button type="button" id="resetScoreBtn">
+                🗑 Reset Scores
             </button>
 
-        </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Built with HTML, CSS & JavaScript</p>
+        </footer>
 
     </div>
 
