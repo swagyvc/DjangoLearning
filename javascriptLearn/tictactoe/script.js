@@ -1,6 +1,6 @@
-// ======================================
+// =========================
 // Select Elements
-// ======================================
+// =========================
 
 const cells = document.querySelectorAll(".cell");
 const statusText = document.getElementById("status");
@@ -12,24 +12,32 @@ const xScoreText = document.getElementById("xScore");
 const oScoreText = document.getElementById("oScore");
 const drawScoreText = document.getElementById("drawScore");
 
-// ======================================
-// Game Variables
-// ======================================
+// =========================
+// Load Scores (persistent)
+// =========================
+
+let xScore = Number(localStorage.getItem("xScore")) || 0;
+let oScore = Number(localStorage.getItem("oScore")) || 0;
+let drawScore = Number(localStorage.getItem("drawScore")) || 0;
+
+xScoreText.textContent = xScore;
+oScoreText.textContent = oScore;
+drawScoreText.textContent = drawScore;
+
+// =========================
+// Game State
+// =========================
 
 let currentPlayer = "X";
 let gameActive = true;
 
 let board = ["", "", "", "", "", "", "", "", ""];
 
-let xScore = 0;
-let oScore = 0;
-let drawScore = 0;
+// =========================
+// Winning Conditions
+// =========================
 
-// ======================================
-// Winning Patterns
-// ======================================
-
-const winningConditions = [
+const winPatterns = [
     [0,1,2],
     [3,4,5],
     [6,7,8],
@@ -42,101 +50,85 @@ const winningConditions = [
     [2,4,6]
 ];
 
-// ======================================
+// =========================
 // Event Listeners
-// ======================================
+// =========================
 
 cells.forEach(cell => {
-    cell.addEventListener("click", handleCellClick);
+    cell.addEventListener("click", handleClick);
 });
 
 restartBtn.addEventListener("click", restartGame);
+resetScoreBtn.addEventListener("click", resetScores);
 
-resetScoreBtn.addEventListener("click", resetScore);
-
-// ======================================
+// =========================
 // Handle Click
-// ======================================
+// =========================
 
-function handleCellClick(event) {
+function handleClick(e) {
 
-    const cell = event.target;
+    const cell = e.target;
     const index = Number(cell.dataset.index);
 
-    // Ignore occupied cells or finished game
-    if (board[index] !== "" || !gameActive) {
-        return;
-    }
+    if (board[index] !== "" || !gameActive) return;
 
     board[index] = currentPlayer;
-
     cell.textContent = currentPlayer;
     cell.classList.add("disabled");
 
-    checkWinner();
+    checkGame();
 }
 
-// ======================================
-// Check Winner
-// ======================================
+// =========================
+// Check Winner / Draw
+// =========================
 
-function checkWinner() {
+function checkGame() {
 
-    let winner = false;
+    let winner = null;
 
-    for (const condition of winningConditions) {
+    for (let pattern of winPatterns) {
 
-        const [a, b, c] = condition;
+        const [a, b, c] = pattern;
 
         if (
-            board[a] !== "" &&
+            board[a] &&
             board[a] === board[b] &&
             board[a] === board[c]
         ) {
-
-            winner = true;
-
-            cells[a].classList.add("winner");
-            cells[b].classList.add("winner");
-            cells[c].classList.add("winner");
-
+            winner = pattern;
             break;
         }
     }
 
     if (winner) {
 
-        statusText.textContent = `🎉 Player ${currentPlayer} Wins!`;
-
         gameActive = false;
 
-        if (currentPlayer === "X") {
+        // highlight winning cells
+        winner.forEach(i => {
+            cells[i].classList.add("winner");
+        });
 
-            xScore++;
+        statusText.textContent = `🎉 Player ${currentPlayer} Wins!`;
 
-            xScoreText.textContent = xScore;
+        updateScore(currentPlayer);
 
-        } else {
-
-            oScore++;
-
-            oScoreText.textContent = oScore;
-        }
+        setTimeout(restartGame, 2000);
 
         return;
     }
 
-    // Draw
-
+    // Draw check
     if (!board.includes("")) {
+
+        gameActive = false;
 
         statusText.textContent = "🤝 It's a Draw!";
 
-        drawScore++;
+        updateScore("draw");
 
-        drawScoreText.textContent = drawScore;
-
-        gameActive = false;
+        setTimeout(restartGame, 2000);
 
         return;
     }
@@ -144,9 +136,9 @@ function checkWinner() {
     switchPlayer();
 }
 
-// ======================================
+// =========================
 // Switch Player
-// ======================================
+// =========================
 
 function switchPlayer() {
 
@@ -155,41 +147,63 @@ function switchPlayer() {
     statusText.textContent = `Player ${currentPlayer}'s Turn`;
 }
 
-// ======================================
-// Restart Board
-// ======================================
+// =========================
+// Update Score
+// =========================
+
+function updateScore(result) {
+
+    if (result === "X") {
+        xScore++;
+        localStorage.setItem("xScore", xScore);
+        xScoreText.textContent = xScore;
+    }
+
+    else if (result === "O") {
+        oScore++;
+        localStorage.setItem("oScore", oScore);
+        oScoreText.textContent = oScore;
+    }
+
+    else {
+        drawScore++;
+        localStorage.setItem("drawScore", drawScore);
+        drawScoreText.textContent = drawScore;
+    }
+}
+
+// =========================
+// Restart Game (new round)
+// =========================
 
 function restartGame() {
 
     board = ["", "", "", "", "", "", "", "", ""];
-
-    currentPlayer = "X";
-
     gameActive = true;
+    currentPlayer = "X";
 
     statusText.textContent = "Player X's Turn";
 
     cells.forEach(cell => {
-
         cell.textContent = "";
-
         cell.classList.remove("winner");
-
         cell.classList.remove("disabled");
-
     });
-
 }
 
-// ======================================
-// Reset Scoreboard
-// ======================================
+// =========================
+// Reset All Scores
+// =========================
 
-function resetScore() {
+function resetScores() {
 
     xScore = 0;
     oScore = 0;
     drawScore = 0;
+
+    localStorage.setItem("xScore", 0);
+    localStorage.setItem("oScore", 0);
+    localStorage.setItem("drawScore", 0);
 
     xScoreText.textContent = 0;
     oScoreText.textContent = 0;
