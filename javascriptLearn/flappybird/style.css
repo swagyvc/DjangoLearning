@@ -1,0 +1,45 @@
+body {
+    background: #70c5ce;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 2px 2px 0 #333;
+}
+
+.hud {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 0 #333;
+}
+
+.hud p {
+    margin: 0;
+}
+
+canvas {
+    background: #4ec0ca;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.instructions {
+    margin-top: 15px;
+    color: #fff;
+    font-size: 0.95rem;
+    text-shadow: 1px 1px 0 #333;
+}
