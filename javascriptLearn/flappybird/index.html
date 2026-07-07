@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Flappy Bird</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,9 +16,11 @@
     <p>Best: <span id="best-score">0</span></p>
 </div>
 
-<canvas id="game" width="400" height="600"></canvas>
+<div class="game-container">
+    <canvas id="game" width="400" height="600"></canvas>
+</div>
 
-<p class="instructions">Press Space or Click to Flap</p>
+<p class="instructions">Tap or press Space to flap</p>
 
 <script src="script.js"></script>
 
