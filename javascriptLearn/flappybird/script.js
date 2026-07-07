@@ -378,7 +378,7 @@ function drawOverlay() {
         ctx.font = "20px Arial";
         ctx.fillText("Score: " + score, canvas.width / 2, canvas.height / 2 + 20);
         ctx.font = "16px Arial";
-        ctx.fillText("Press Space or Click to Restart", canvas.width / 2, canvas.height / 2 + 55);
+        ctx.fillText("Tap to Restart", canvas.width / 2, canvas.height / 2 + 55);
     }
 }
 
@@ -404,6 +404,21 @@ function gameLoop() {
 // Event Listeners
 // =========================
 
+let ignoreMouseUntil = 0;
+
+function handleInput(e) {
+    if (e.type === "mousedown" && Date.now() < ignoreMouseUntil) {
+        return;
+    }
+
+    if (e.type === "touchstart") {
+        e.preventDefault();
+        ignoreMouseUntil = Date.now() + 300;
+    }
+
+    flap();
+}
+
 document.addEventListener("keydown", (e) => {
     if (e.code === "Space" || e.code === "ArrowUp") {
         e.preventDefault();
@@ -411,7 +426,8 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-canvas.addEventListener("mousedown", flap);
+canvas.addEventListener("mousedown", handleInput);
+canvas.addEventListener("touchstart", handleInput, { passive: false });
 
 // =========================
 // Init
