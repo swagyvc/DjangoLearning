@@ -11,12 +11,12 @@ const bestScoreEl = document.getElementById("best-score");
 // Constants
 // =========================
 
-const GRAVITY = 0.25;
-const FLAP_STRENGTH = -5;
-const PIPE_SPEED = 2;
+const GRAVITY = 0.2;
+const FLAP_STRENGTH = -4;
+const PIPE_SPEED = 1.5;
 const PIPE_GAP = 120;
 const PIPE_WIDTH = 60;
-const PIPE_SPAWN_INTERVAL = 1500;
+const PIPE_SPAWN_INTERVAL = 1800;
 const GROUND_HEIGHT = 80;
 
 // =========================
