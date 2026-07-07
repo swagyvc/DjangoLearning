@@ -27,6 +27,77 @@ let bestScore = Number(localStorage.getItem("flappyBestScore")) || 0;
 bestScoreEl.textContent = bestScore;
 
 // =========================
+// Sound (Web Audio API)
+// =========================
+
+let audioCtx = null;
+
+function initAudio() {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === "suspended") {
+        audioCtx.resume();
+    }
+}
+
+function playFlapSound() {
+    initAudio();
+    if (!audioCtx) return;
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(300, now);
+    osc.frequency.linearRampToValueAtTime(500, now + 0.15);
+    gain.gain.setValueAtTime(0.2, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+    osc.start(now);
+    osc.stop(now + 0.3);
+}
+
+function playScoreSound() {
+    initAudio();
+    if (!audioCtx) return;
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(800, now);
+    gain.gain.setValueAtTime(0.25, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+    osc.start(now);
+    osc.stop(now + 0.12);
+}
+
+function playHitSound() {
+    initAudio();
+    if (!audioCtx) return;
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+    osc.type = "sawtooth";
+    osc.frequency.setValueAtTime(150, now);
+    osc.frequency.exponentialRampToValueAtTime(80, now + 0.3);
+    gain.gain.setValueAtTime(0.3, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+    osc.start(now);
+    osc.stop(now + 0.3);
+}
+
+// =========================
 // Game State
 // =========================
 
@@ -69,14 +140,18 @@ function resetGame() {
 // =========================
 
 function flap() {
+    initAudio();
+
     if (gameState === "ready") {
         gameState = "playing";
         bird.velocity = FLAP_STRENGTH;
+        playFlapSound();
         return;
     }
 
     if (gameState === "playing") {
         bird.velocity = FLAP_STRENGTH;
+        playFlapSound();
         return;
     }
 
@@ -182,6 +257,7 @@ function checkScore() {
             pipe.passed = true;
             score++;
             scoreEl.textContent = score;
+            playScoreSound();
         }
     }
 }
@@ -192,6 +268,7 @@ function checkScore() {
 
 function triggerGameOver() {
     gameState = "gameOver";
+    playHitSound();
 
     if (score > bestScore) {
         bestScore = score;
