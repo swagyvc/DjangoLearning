@@ -7,7 +7,12 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    min-height: 100dvh;
     margin: 0;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+    overflow: hidden;
 }
 
 h1 {
@@ -30,11 +35,21 @@ h1 {
     margin: 0;
 }
 
+.game-container {
+    width: min(400px, calc(100vw - 16px));
+}
+
 canvas {
     background: #4ec0ca;
     border: 4px solid #fff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 400 / 600;
+    display: block;
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .instructions {
@@ -42,4 +57,21 @@ canvas {
     color: #fff;
     font-size: 0.95rem;
     text-shadow: 1px 1px 0 #333;
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.25rem;
+        margin-bottom: 6px;
+    }
+
+    .hud {
+        gap: 16px;
+        margin-bottom: 6px;
+        font-size: 1rem;
+    }
+
+    .instructions {
+        display: none;
+    }
 }
