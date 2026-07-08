@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Jungle Runner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+
+        <div id="hud" class="overlay hud hidden">
+            <div class="hud-row">
+                <span class="hud-label">Score</span>
+                <span id="hud-score" class="hud-value">0</span>
+            </div>
+            <div class="hud-row">
+                <span class="hud-label">Coins</span>
+                <span id="hud-coins" class="hud-value">0</span>
+            </div>
+            <div class="hud-row">
+                <span class="hud-label">Speed</span>
+                <span id="hud-speed" class="hud-value">5.4</span>
+            </div>
+            <div id="hud-powerups" class="hud-powerups"></div>
+            <div class="hud-row hud-fps">
+                <span id="hud-fps" class="hud-value">60</span>
+                <span class="hud-label">FPS</span>
+            </div>
+            <button id="btn-mute" class="hud-btn" aria-label="Mute">🔊</button>
+            <button id="btn-pause" class="hud-btn" aria-label="Pause">⏸</button>
+        </div>
+
+        <div id="menu" class="overlay menu">
+            <h1 class="title">Jungle Runner</h1>
+            <p class="subtitle">Endless runner through the wild</p>
+            <button id="btn-play" class="btn btn-primary">Play</button>
+            <div class="controls-hint">
+                <p><kbd>A</kbd>/<kbd>D</kbd> or swipe — move lanes</p>
+                <p><kbd>Space</kbd>/<kbd>W</kbd> or swipe up — jump</p>
+                <p><kbd>S</kbd> or swipe down — slide</p>
+                <p><kbd>P</kbd> — pause &nbsp; <kbd>R</kbd> — restart</p>
+            </div>
+        </div>
+
+        <div id="pause" class="overlay menu hidden">
+            <h2 class="title">Paused</h2>
+            <button id="btn-resume" class="btn btn-primary">Resume</button>
+            <p class="controls-hint">Press <kbd>P</kbd> to resume</p>
+        </div>
+
+        <div id="gameover" class="overlay menu hidden">
+            <h2 class="title">Game Over</h2>
+            <p class="score-line">Score: <span id="gameover-score">0</span></p>
+            <p class="score-line">Coins: <span id="gameover-coins">0</span></p>
+            <p class="score-line">Best: <span id="gameover-highscore">0</span></p>
+            <button id="btn-restart" class="btn btn-primary">Restart</button>
+            <p class="controls-hint">Press <kbd>R</kbd> to restart</p>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

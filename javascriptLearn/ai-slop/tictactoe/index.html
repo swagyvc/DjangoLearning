@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Title -->
+        <header>
+            <h1>Tic Tac Toe</h1>
+            <p class="subtitle">Play with your friend!</p>
+        </header>
+
+        <!-- Scoreboard -->
+        <section class="scoreboard">
+
+            <div class="score-card player-x">
+                <span class="label">Player X</span>
+                <span id="xScore" class="score">0</span>
+            </div>
+
+            <div class="score-card draws">
+                <span class="label">Draws</span>
+                <span id="drawScore" class="score">0</span>
+            </div>
+
+            <div class="score-card player-o">
+                <span class="label">Player O</span>
+                <span id="oScore" class="score">0</span>
+            </div>
+
+        </section>
+
+        <!-- Game Status -->
+        <section class="status-container">
+            <h2 id="status">Player X's Turn</h2>
+        </section>
+
+        <!-- Game Board -->
+        <main class="board">
+
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+
+        </main>
+
+        <!-- Buttons -->
+        <section class="controls">
+
+            <button type="button" id="restartBtn">
+                🔄 Restart Round
+            </button>
+
+            <button type="button" id="resetScoreBtn">
+                🗑 Reset Scores
+            </button>
+
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Built with HTML, CSS & JavaScript</p>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
