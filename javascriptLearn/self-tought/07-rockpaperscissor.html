@@ -31,7 +31,7 @@
                     } else if (computerMove === 'Scissors') {
                         result = 'Tie.';
                     }
-                    alert(`You picked ${playerMove}. Computer picked ${computerMove}. You ${result}`);
+
                 } else if (playerMove === 'Paper') {
                     if (computerMove === 'Rock') {
                     result = 'Win.';
@@ -40,7 +40,7 @@
                     } else if (computerMove === 'Scissors') {
                     result = 'Lose.';
                     }
-                    alert(`You picked ${playerMove}. Computer picked ${computerMove}. You ${result}`);
+
                 } else if (computerMove === 'Rock') {
                     if (computerMove === 'Rock') {
                     result = 'Tie.';
@@ -49,8 +49,10 @@
                     } else if (computerMove === 'Scissors') {
                     result = 'Win.';
                     }
-                    alert(`You picked ${playerMove}. Computer picked ${computerMove}. You ${result}`);
+
                 }
+                
+                alert(`You picked ${playerMove}. Computer picked ${computerMove}. You ${result}`);
                 
             }
 
