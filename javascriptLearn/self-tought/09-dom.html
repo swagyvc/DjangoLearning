@@ -5,6 +5,7 @@
     </head>
     <body>
         <button>hello</button>
+        <button class = "js-button">Second Button</button>
 
         <script>
             // console.log(document.title);
@@ -16,8 +17,10 @@
 
             // document.body.innerHTML = '<button>good job!</button>';
 
-            console.log(document.querySelector('button'));
-            
+            console.log(document.querySelector('button').innerHTML);
+            document.querySelector('button').innerHTML = 'Changed';
+
+            console.log(document.querySelector('.js-button'));
 
             // document.body.innerHTML = 'hello';
             // document.title = 'good job!';
