@@ -5,15 +5,7 @@
     </head>
     <body>
         <p>Youtube Subscribe Button</p>
-        <button onclick = "
-            const buttonElement = document.querySelector('.js-subscribe-button');
-
-            if(buttonElement.innerHTML === 'Subscribe') {
-                buttonElement.innerHTML = 'Subscribed';
-            } else {
-                buttonElement.innerHTML = 'Subscribe';
-            }
-        " class = "js-subscribe-button">Subscribe</button>
+        <button onclick = "subscribe()" class = "js-subscribe-button">Subscribe</button>
 
         <p>Rock Paper Scissors</p>
         <a href = 'test/08-rockpaperscissor.html'>Click here</a>
@@ -26,7 +18,15 @@
         <button>Calculate</button>
 
         <script>
-            
+            function subscribe() {
+                 const buttonElement = document.querySelector('.js-subscribe-button');
+
+            if(buttonElement.innerText === 'Subscribe') {
+                buttonElement.innerHTML = 'Subscribed';
+            } else {
+                buttonElement.innerHTML = 'Subscribe';
+            }
+            }
         </script>
     </body>
 </html>
