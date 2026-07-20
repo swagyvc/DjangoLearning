@@ -1,0 +1,25 @@
+            body{
+                background-color: rgb(24, 24, 24);
+                color: white;
+                font-family: Arial;
+            }
+
+            .title {
+                font-size: 30px;
+                font-weight: bold;
+            }
+
+            .move-icon{
+                background-color: transparent;
+                border: 2px solid white;
+                padding: 50px;
+                font-size: 90px;
+                border-radius: 100px;
+                cursor: pointer;
+                margin: 10px;
+            }
+
+            .result {
+                font-size: 20px;
+                font-weight: bold;
+            }
