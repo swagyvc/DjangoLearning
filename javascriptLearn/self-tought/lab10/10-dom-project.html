@@ -2,10 +2,49 @@
 <html>
     <head>
         <title>DOM Projects</title>
+        <style>
+            body {
+                font-family: Arial;
+            }
+
+            .subscibe-button{
+                border: none;
+                background-color: black;
+                color: white;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                padding-right: 15px;
+                padding-left: 15px;
+                border-radius: 50px;
+                font-weight: bold;
+                cursor: pointer;
+                margin: 30px;
+            }
+
+            .is-subscribed {
+                background-color: rgb(238, 236, 236);
+                color: black;
+            }
+
+            .cost-input {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .calculate-button{
+                background-color: rgb(0, 151, 0);
+                color: white;
+                border: None;
+                padding: 10px;
+                font-size: 15px;
+                cursor: pointer;
+            }
+
+        </style>
     </head>
     <body>
         <p>Youtube Subscribe Button</p>
-        <button onclick = "subscribe()" class = "js-subscribe-button">Subscribe</button>
+        <button onclick = "subscribe()" class = "js-subscribe-button subscibe-button">Subscribe</button>
 
         <p>Rock Paper Scissors</p>
         <a href="/DjangoLearn/javascriptLearn/self-tought/lab09/09-rock-paper-scissors.html">Link Text</a>
@@ -14,10 +53,10 @@
         <p>Orders under $40 = +$10 shipping</p>
         <p>Orders over $40 = FREE shipping</p>
         
-        <input placeholder = "Cost of order" class = "js-cost-input" onkeydown = "handleCostKeydown(event)">
+        <input placeholder = "Cost of order" class = "js-cost-input cost-input" onkeydown = "handleCostKeydown(event)">
         <button onclick = "
             calculateTotal();
-        ">Calculate</button>
+        " class = "calculate-button">Calculate</button>
 
         <p class="js-total-cost"></p>
 
@@ -32,8 +71,10 @@
 
             if(buttonElement.innerText === 'Subscribe') {
                 buttonElement.innerHTML = 'Subscribed';
+                buttonElement.classList.add('is-subscribed');
             } else {
                 buttonElement.innerHTML = 'Subscribe';
+                buttonElement.classList.remove('is-subscribed');
             }
             }
 
