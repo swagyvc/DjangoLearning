@@ -24,8 +24,15 @@ Change the .textContent of the paragraph to 😎
             const myIcon = document.querySelector('.icon');
             
             myButton.addEventListener('click', function() {
-                myIcon.innerHTML = '☺️';
+                if (myIcon.textContent === '😔') {
+                    myIcon.innerHTML = '😊';
+                    myButton.innerHTML = 'Make Sad';
+                } else {
+                    myIcon.innerHTML = '😔';
+                    myButton.innerHTML = 'Make Happy';
+                }
             })
+            
         </script>
     </body>
 </html>
