@@ -1,3 +1,9 @@
+<!--
+Task 1: The Emoji Changer (Easiest)Create a page where clicking a button changes a boring emoji into a cool one.
+HTML: One <p> tag containing a 😐 emoji, and one <button> that says "Make Happy".JS 
+Goal: Use querySelector to find both elements. Add a click listener to the button. 
+Change the .textContent of the paragraph to 😎
+-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +20,12 @@
         <p class = "icon">😔</p>
         <button class = "change-button">Make Happy</button>
         <script>
-
+            const myButton = document.querySelector('.change-button');
+            const myIcon = document.querySelector('.icon');
+            
+            myButton.addEventListener('click', function() {
+                myIcon.innerHTML = '☺️';
+            })
         </script>
     </body>
 </html>
