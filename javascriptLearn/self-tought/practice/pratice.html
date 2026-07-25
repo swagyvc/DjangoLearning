@@ -1,42 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Name Inserter</title>
-  <link rel = stylesheet href = "style.css">
+    <title>Practice</title>
+    <!-- Your CSS file is linked here -->
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
 
-  <!-- 2. HTML: Creating the structure -->
-  <div class="card">
-    <h3>Enter Your Name</h3>
-    <input type="text" id="nameInput" placeholder="Type name here...">
-    <button id="submitBtn">Display Name</button>
-    
-    <!-- Empty area where JS will insert the name -->
-    <div id="displayName"></div>
-  </div>
+    <!-- 1. The HTML Structure -->
+    <input class="name-input" placeholder="Full Name">
+    <button>Add</button>
+    <p class="show-name"></p>
 
-  <!-- 3. JAVASCRIPT: Making it interactive -->
-  <script>
-    // Target the HTML elements using their IDs
-    const button = document.getElementById('submitBtn');
-    const input = document.getElementById('nameInput');
-    const displayArea = document.getElementById('displayName');
+    <!-- 2. The Basic JavaScript -->
+    <script>
+        // Find the HTML elements using their tags or classes (remember the dot for classes!)
+        const myInput = document.querySelector('.name-input');
+        const myButton = document.querySelector('button');
+        const myParagraph = document.querySelector('.show-name');
 
-    // Listen for the user to click the button
-    button.addEventListener('click', function() {
-      // Get the value typed into the input field
-      const userName = input.value;
+        // Wait for the user to click the button
+        myButton.addEventListener('click', function() {
+            
+            // Get the text that was typed into the input box
+            const textTyped = myInput.value;
 
-      // Clear previous content and append the text using modern .append()
-      displayArea.textContent = ''; 
-      displayArea.append(`Hello, ${userName}!`);
-
-      // Clear the input box for the next entry
-      input.value = '';
-    });
-  </script>
+            // Put that text inside the empty paragraph tag
+            myParagraph.textContent = textTyped;
+            
+            // Optional: Clear the input box so you can type a new name
+            myInput.value = '';
+        });
+    </script>
 
 </body>
 </html>
