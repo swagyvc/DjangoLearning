@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Pratice</title>
-    <link rel = "stylesheet" href = "style.css">
+  <meta charset="UTF-8">
+  <title>Name Inserter</title>
+  <link rel = stylesheet href = "style.css">
 </head>
 <body>
-    <input placeholder = "Full Name"></input>
-    <button>Add</button>
 
+  <!-- 2. HTML: Creating the structure -->
+  <div class="card">
+    <h3>Enter Your Name</h3>
+    <input type="text" id="nameInput" placeholder="Type name here...">
+    <button id="submitBtn">Display Name</button>
+    
+    <!-- Empty area where JS will insert the name -->
+    <div id="displayName"></div>
+  </div>
 
+  <!-- 3. JAVASCRIPT: Making it interactive -->
+  <script>
+    // Target the HTML elements using their IDs
+    const button = document.getElementById('submitBtn');
+    const input = document.getElementById('nameInput');
+    const displayArea = document.getElementById('displayName');
 
+    // Listen for the user to click the button
+    button.addEventListener('click', function() {
+      // Get the value typed into the input field
+      const userName = input.value;
 
-    <script>
-        console.log(document.querySelector('button').innerHTML);
+      // Clear previous content and append the text using modern .append()
+      displayArea.textContent = ''; 
+      displayArea.append(`Hello, ${userName}!`);
 
-        console.log(document.querySelector('button').innerHTML = 'Changed');
-        
-    </script>
+      // Clear the input box for the next entry
+      input.value = '';
+    });
+  </script>
+
 </body>
 </html>
