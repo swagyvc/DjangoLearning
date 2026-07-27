@@ -4,8 +4,22 @@
         <title>Even & Odd Practice</title>
     </head>
     <body>
-        
+        <input type = "number" id = "number-input" placeholder = "Enter Number">
+        <button id = "check-number">Check</button>
+        <p id = "show-result"></p>
       <script>
+        const numberInput = document.querySelector('#number-input');
+        const checkButton = document.querySelector('#check-number');
+        const displayResult = document.querySelector('#show-result');
+        
+        checkButton.addEventListener('click', function(){
+            const userInput = numberInput.value;
+            if (userInput % 2 === 0){
+                displayResult.textContent = `${userInput} is Even Number`
+            } else if (userInput % 2 !== 0) {
+                displayResult.textContent = `${userInput} is Odd Number`
+            }
+        })
         </script>
     </body>
 </html>
