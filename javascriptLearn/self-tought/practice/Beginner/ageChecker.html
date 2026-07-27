@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Age Checker Practice</title>
+    </head>
+    <body>
+        <h1>Age Checker APP</h1>
+        <input type = "number" id = "input-age" placeholder = "Enter Age Number">
+        <button id = "check-button">Age Check</button>
+        <p id = "check-display"></p>
+      
+      <script>
+        const ageInput = document.querySelector('#input-age');
+        const checkButton = document.querySelector('#check-button');
+        const checkDisplay = document.querySelector('#check-display');
+        
+        // Under 18 → "Minor"
+        // 18–64 → "Adult"
+        // 65+ → "Senior"
+        checkButton.addEventListener('click', function(){
+            const userInput = ageInput.value;
+            
+            if (userInput < 18 & userInput >= 0){
+                checkDisplay.textContent = 'Minor';
+            } else if (userInput >= 18 && userInput <= 64) {
+                checkDisplay.textContent = 'Adult';
+            } else {
+                checkDisplay.textContent = 'Senior';
+            }
+        })
+        </script>
+    </body>
+</html>
