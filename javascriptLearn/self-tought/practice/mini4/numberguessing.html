@@ -1,17 +1,71 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <titile>Number Guessing Game Practice</titile>
-        <link rel = "stylesheet" href = "style.css">
-        <style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Input Practice</title>
 
-        </style>
-    </head>
-    <body>
-        
-        <script>
-            //computer will generate a random number then will use it to compare with the number
-            //that user input, if it smaller/bigger/equal -> show user a message (too low/hight and correct)
-        </script>
-    </body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        p {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Display User Input</h1>
+
+    <input
+        type="number"
+        id="user-input"
+        placeholder="Enter a number">
+
+    <button id="show-number-button">
+        Show Number
+    </button>
+
+    <p id="user-input-display">
+        Your number will appear here.
+    </p>
+
+    <script>
+        const userInput = document.querySelector('#user-input');
+        const displayNumber = document.querySelector('#user-input-display');
+        const showNumberButton = document.querySelector('#show-number-button');
+
+        showNumberButton.addEventListener('click', function () {
+            const numberInput = userInput.value;
+
+            displayNumber.textContent = "You entered: " + numberInput;
+
+            // Clear the input
+            userInput.value = "";
+
+            // Put the cursor back in the input
+            userInput.focus();
+        });
+    </script>
+
+</body>
 </html>
