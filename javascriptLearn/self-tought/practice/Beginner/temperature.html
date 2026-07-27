@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Temperature Practice</title>
+    </head>
+    <body>
+        <input type = "number" id = "number-input" placeholder = "Enter Number">
+        <button id = "c-t">Celsius to Fahrenheit</button>
+        <button id = "f-c">Fahrenheit to Celsius</button>
+        <p id = "display"></p>
+      <script>
+        const numberInput = document.querySelector('#number-input');
+        const celToFahButton = document.querySelector('#c-t');
+        const FahtoCelButton = document.querySelector('#f-c');
+        const displayResult = document.querySelector('#display');
+
+        const celToFar = celToFahButton.addEventListener('click', celToFah);
+        const farToCel = FahtoCelButton.addEventListener('click', FahToCel);
+
+        // Celsius to Fahrenheit: (°C * 9/5) + 32 = °F
+        // Fahrenheit to Celsius: (°F - 32) * 5/9 = °C
+        
+        function celToFah() {
+            const userInput = numberInput.value;
+            const result = Math.floor((userInput * 9/5) + 32);
+            
+            displayResult.textContent =  `${userInput} °C = ${result} °F`;
+        }
+
+        function FahToCel() {
+            const userInput = numberInput.value;
+            const result = Math.floor((userInput - 32) * 5/9);
+          
+            displayResult.textContent =  `${userInput} °F = ${result} °C`;
+        }
+
+        </script>
+    </body>
+</html>
